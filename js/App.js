@@ -46,26 +46,89 @@ const home = document.getElementById('home'),
  // Page Event Listeners
 // Home
 home.addEventListener('click', (e) => {
-  if(currentState == 'homeState {}'){ console.log('kloc')}
-  page.change(new homeState);
+  if(e.target.parentNode.classList.contains('active') ){ 
+    console.log('active, exit');
+    return;
+  }else {
+    // remove active from any <li> tag
+    let array = document.querySelectorAll('.nav-item');
+    array.forEach(function(liItem){
+      liItem.classList.remove('active');
+    })
 
+    // add active to current <li>
+    e.target.parentNode.classList.add('active');
+
+    
+
+    page.change(new homeState);
+  }
+
+  
+
+  // set page as active
+  
   // e.preventDefault();
 });
 // Nav - home
 navLogo.addEventListener('click', (e) => {
-  page.change(new homeState);
+  if(e.target.parentNode.classList.contains('active') ){ 
+    console.log('active, exit');
+    return;
+  }else {
+    // remove active from any <li> tag
+    let array = document.querySelectorAll('.nav-item');
+    array.forEach(function(liItem){
+      liItem.classList.remove('active');
+    })
+    
+    // add active to current <li>
+    e.target.parentNode.classList.add('active');
+
+    page.change(new homeState);
+  }
 })
 
 // About
 about.addEventListener('click', (e) => {
-  page.change(new aboutState);
+  if(e.target.parentNode.classList.contains('active') ){ 
+    console.log('active, exit');
+    return;
+  }else {
+    // remove active from any <li> tag
+    let array = document.querySelectorAll('.nav-item');
+    array.forEach(function(liItem){
+      liItem.classList.remove('active');
+    })
+    
+    // add active to current <li>
+    e.target.parentNode.classList.add('active');
 
+    page.change(new aboutState);
+  }
   // e.preventDefault();
 });
 
 // Hero
 hero.addEventListener('click', (e) => {
-  page.change(new heroState);
+  
+  if(e.target.parentNode.classList.contains('active') ){ 
+    console.log('active, exit');
+    return;
+  }else {
+    // remove active from any <li> tag
+    let array = document.querySelectorAll('.nav-item');
+    array.forEach(function(liItem){
+      liItem.classList.remove('active');
+    })
+
+    // add active to current <li>
+    e.target.parentNode.classList.add('active');
+
+    
+
+    page.change(new heroState);
+  }
   // e.preventDefault();
 });
 
