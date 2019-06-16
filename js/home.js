@@ -4,7 +4,8 @@ export const homeState = function() {
   window.location.hash = '#';
   document.querySelector('#heading').textContent = 'Home';
   document.querySelector('#content').innerHTML = `
-  <p id="title">This is home page, welcome</p>
+  <p id="title">Just a simple home page, welcome to my sandbox. <br/>
+  The page contains State Pattern, so be aware that it violates browser-back-button which therefore won't work here - use our navigation instead!</p> 
   `;
 
   DomLoad; // init animations
@@ -28,7 +29,7 @@ const DomLoad = document.addEventListener('DOMContentLoaded', () => {
 
 
 
- 
+  // 500ms delay
   setTimeout(function(){
     document.body.style.transition = "150ms all ease-in"
     document.body.style.backgroundColor = "white";
