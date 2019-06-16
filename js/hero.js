@@ -1,7 +1,7 @@
 // Contact State
 
 export const heroState = function(page) {
-  
+    
   document.querySelector('#heading').textContent = 'Hero page';
   
  
@@ -51,15 +51,24 @@ export const heroState = function(page) {
   async function loader(){
     
   const promise = new Promise((resolve, reject) => {
-    document.querySelector('#content').innerHTML = injectLoader;
+    document.querySelector('#content').innerHTML = injectLoader;  // Puts loader
 
-    let objImg = new Image();
-    objImg.src = '../media/test.jpg';
+
+
+
+    let objImg = new Image(); // init Image [biggest one]
+    objImg.src = '../media/test.jpg';  // init src of Image
+    
     objImg.onload = function() { 
+      
+      
       setTimeout(function(){ 
-      console.log('Dom loaded');
-      document.querySelector('#content').innerHTML = injectDom;
-    }, 250);
+        console.log('Hero loaded');
+        document.querySelector('#content').innerHTML = injectDom;
+
+        animateHeroPage();
+      }, 250);
+    
     }
     
 
@@ -86,3 +95,10 @@ loader()
 
 };
 
+
+
+ // ANIMATION
+ const animateHeroPage = () => {
+  const testQuery = document.querySelector('.img-test-1');
+  console.log(testQuery);
+}
