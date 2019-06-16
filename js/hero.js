@@ -8,6 +8,7 @@ export const heroState = function(page) {
     
   document.querySelector('#heading').textContent = 'Hero pages';
   
+  
  
   const injectLoader = `
   <img src="https://www.airport-budapest.info/images/loading.gif" />`;
@@ -72,16 +73,19 @@ export const heroState = function(page) {
   async function loader(){
     
   const promise = new Promise((resolve, reject) => {
-    document.querySelector('#content').innerHTML = injectLoader;  // Puts loader
-
-    let objImg = new Image(); // init Image [biggest one]
-    objImg.src = '../media/test.jpg';  // init src of Image
+    document.querySelector('#content').innerHTML = injectLoader;  // Puts loader at start
     
-    objImg.onload = function() {
-      
+
+    let objImg = new Image();           // init Image [biggest one]
+    objImg.src = '../media/test.jpg';   // init src of Image
+    
+    objImg.onload = function() {        // when image is loaded.. show the page
+
+      // PAGE LOADED!
       setTimeout(function(){
         console.log('Hero loaded');
-        document.querySelector('#content').innerHTML = injectDom; // inject hero content after images will be loaded
+
+        animateAndInjectHeroPage();
 
 
     
@@ -95,7 +99,7 @@ export const heroState = function(page) {
           subPage.change(new heroPage1);
         })
 
-        animateHeroPage();
+        
       }, 250);
     }
     
@@ -115,17 +119,34 @@ export const heroState = function(page) {
 
 
 loader()
-  .then(res => console.log('1') )
+  .then(res => console.log(res) )
   .catch(err => console.log(err));
 
 
 
 
+
+  // ANIMATION entry
+  const animateAndInjectHeroPage = () => {
+
+    document.querySelector('#content').innerHTML = injectDom; // inject hero content after images will be loaded
+
+
+    document.querySelector('#content').style.transform = 'translateX(100px)';
+    document.querySelector('#content').style.opacity = '0';
+    document.querySelector('#content').style.transition = 'none';
+    setTimeout(function(){
+      
+      document.querySelector('#content').style.opacity = '1';
+      document.querySelector('#content').style.transform = 'translateX(0)';
+      document.querySelector('#content').style.transition = '500ms all ease';
+      
+    }, 500)
+    
+    
+    const testQuery = document.querySelector('.img-test-1');
+    console.log(testQuery);
+  }
 };
 
 
- // ANIMATION
- const animateHeroPage = () => {
-  const testQuery = document.querySelector('.img-test-1');
-  console.log(testQuery);
-}
