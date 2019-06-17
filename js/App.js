@@ -25,10 +25,10 @@ const PageState = function() {
 };
 
 const checkIfActivePage = (e) => {
-  if(e.target.parentNode.classList.contains('active') ){ 
+  if(e.target.parentNode.classList.contains('active') ){  // if page already active
     console.log('active, exit');
-    result = false;
-    return result;
+    
+    return result = false;
   }else {
     // remove active from any <li> tag
     let array = document.querySelectorAll('.nav-item');
@@ -38,8 +38,8 @@ const checkIfActivePage = (e) => {
 
     // add active to current <li>
     e.target.parentNode.classList.add('active');
-    result = true;
-    return result;
+    
+    return result = true;
   }
 }
 
@@ -68,8 +68,14 @@ const home = document.getElementById('home'),
 home.addEventListener('click', (e) => {
   checkIfActivePage(e); // checking if active
 
-  result === true && page.change(new homeState);  // set page as active if result true
+  function selectBox(id){
+    let links = Array.from(document.getElementsByClassName('nav-item'));
+    links.forEach(b => {
+      b.classList.toggle('selected', b.id === id);
+    });
+  }
 
+  result === true && page.change(new homeState)  // set page as active if result true
   // e.preventDefault();
 });
 
@@ -79,7 +85,6 @@ navLogo.addEventListener('click', (e) => {
   checkIfActivePage(e); // checking if active
 
   result === true && page.change(new homeState);  // set page as active if result true
-
 })
 
 
@@ -89,7 +94,6 @@ about.addEventListener('click', (e) => {
   checkIfActivePage(e); // checking if active
 
   result === true && page.change(new aboutState);  // set page as active if result true
-
   // e.preventDefault();
 });
 
@@ -100,7 +104,6 @@ hero.addEventListener('click', (e) => {
   checkIfActivePage(e); // checking if active
 
   result === true && page.change(new heroState);  // set page as active if result true
-
   // e.preventDefault();
 });
 

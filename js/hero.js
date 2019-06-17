@@ -1,3 +1,4 @@
+// import subpages
 import { heroPage1 } from './hero-pages/heroPage1.js';
 
 
@@ -16,8 +17,7 @@ export const heroState = function(page) {
 
   const injectDom = `
   <p>This is hero page</p>
-  <p> big, 14mb picture over here and page is waiting for pictures' load</p>
-  <img src="../media/test.jpg" class="card-img-top img-test-1" alt="...">
+  
 
   
   <div class="row">
@@ -50,14 +50,17 @@ export const heroState = function(page) {
     </div>
   </div>
 
+  
+
   </div>
+  <p> big, 14mb picture over here and page is waiting for it to load</p>
+  <img src="../media/test.jpg" class="card-img-top img-test-1" alt="...">
   `;
   
 
   // State for sub pages of Hero page
   let currentSubState;
   const PageSubState = function() {
-    //currentSubState = new homeState(this);
   
     this.change = function(state) {
       currentSubState = state;
@@ -72,55 +75,48 @@ export const heroState = function(page) {
   // LOADER
   async function loader(){
     
-  const promise = new Promise((resolve, reject) => {
-    document.querySelector('#content').innerHTML = injectLoader;  // Puts loader at start
+    const promise = new Promise((resolve, reject) => {
+      document.querySelector('#content').innerHTML = injectLoader;  // Puts loader at start
     
 
-    let objImg = new Image();           // init Image [biggest one]
-    objImg.src = '../media/test.jpg';   // init src of Image
-    
-    objImg.onload = function() {        // when image is loaded.. show the page
-
-      // PAGE LOADED!
-      setTimeout(function(){
-        console.log('Hero loaded');
-
-        animateAndInjectHeroPage();
+      let objImg = new Image();           // init Image [biggest one]
+      objImg.src = '../media/test.jpg';   // init src of Image
+      
+      objImg.onload = function() {        // when image is loaded.. show the page
 
 
-    
-  
-       
-        const cardOne = document.getElementById('card-1');  // target link
-        
-        cardOne.addEventListener('click', (e) => {
-          document.querySelectorAll('.nav-item')[1].classList.remove('active'); // remove active from hero main
-         
-          subPage.change(new heroPage1);
-        })
+        // PAGE LOADED!
+        setTimeout(function(){
+          console.log('Hero loaded');
+          // Inject Dom
+          animateAndInjectHeroPage();
 
-        
-      }, 250);
+          // Card links
+          const cardOne = document.getElementById('card-1');  
+          
+          cardOne.addEventListener('click', (e) => {
+            document.querySelectorAll('.nav-item')[1].classList.remove('active'); // remove active from hero main
+          
+            subPage.change(new heroPage1);
+          })
+        }, 250);
+      }
+    });
+
+    const error = false;
+
+    if(!error){
+      const res = await promise;  // Wait until the promise is resolved
+      return res;
+    } else {
+      await Promise.reject(new Error('something went wrong'));
     }
-    
-
-  });
-
-  const error = false;
-
-  if(!error){
-    const res = await promise;  // Wait until the promise is resolved
-    return res;
-  } else {
-    await Promise.reject(new Error('something went wrong'));
   }
-  
-}
 
 
-loader()
-  .then(res => console.log(res) )
-  .catch(err => console.log(err));
+  loader()
+    .then(res => console.log(res) )
+    .catch(err => console.log(err));
 
 
 
@@ -128,19 +124,17 @@ loader()
 
   // ANIMATION entry
   const animateAndInjectHeroPage = () => {
-
     document.querySelector('#content').innerHTML = injectDom; // inject hero content after images will be loaded
-
 
     document.querySelector('#content').style.transform = 'translateX(100px)';
     document.querySelector('#content').style.opacity = '0';
     document.querySelector('#content').style.transition = 'none';
+
     setTimeout(function(){
-      
       document.querySelector('#content').style.opacity = '1';
       document.querySelector('#content').style.transform = 'translateX(0)';
       document.querySelector('#content').style.transition = '500ms all ease';
-      
+
     }, 500)
     
     

@@ -28,6 +28,10 @@ body{
     background-color: #fff;
     min-height: 100%;
 }
+
+.active{
+  border-bottom: 1px solid black;
+}
 // h1{
 //   color: $light-green;
 //   text-align: center;
