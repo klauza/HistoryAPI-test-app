@@ -2,12 +2,8 @@ import { homeState } from './home.js';
 import { aboutState } from './about.js';
 import { heroState } from './hero.js';
 
-// PAGES
-
-
-
-
-
+// show hidden nav-bar
+document.querySelector('nav').classList.remove("d-none");
 
 
 let currentState;
@@ -16,19 +12,19 @@ let result;
 // constructor
 const PageState = function() {
   currentState = new homeState(this);
-  history.pushState('home', 'Selected: home', '/home' );
-  // this.init = function() {
-  //   window.location.hash = "#";
-  //   this.change(new homeState);
-  // }
+  history.pushState('home', 'Selected: home', './home' );
+
+  this.init = function() {
+    this.change(new homeState);
+  }
 
   this.change = function(state) {
-    //console.log(state);
     currentState = state;
   }
 };
 
 const checkIfActivePage = (e) => {
+ 
   if(e.target.parentNode.classList.contains('active') ){  // if page already active
     console.log('active, exit');
     
@@ -52,9 +48,9 @@ const checkIfActivePage = (e) => {
 // Instantiate pageState
 const page = new PageState();
 // Init the first state (homePage)
-// page.init();
+  page.init();
 
-//currentState = new homeState(this);
+currentState = new homeState(this);
   
 
 
@@ -70,23 +66,23 @@ const home = document.getElementById('home'),
 
 
 // Prevent from refresh the page
-document.onkeydown = function() 
-{
-    switch (event.keyCode) 
-    {
-        case 116 : //F5 button
-            event.returnValue = false;
+// document.onkeydown = function() 
+// {
+//     switch (event.keyCode) 
+//     {
+//         case 116 : //F5 button
+//             event.returnValue = false;
             
-            return false;
-        case 82 : //R button
-            if (event.ctrlKey) 
-            {
-                event.returnValue = false;
+//             return false;
+//         case 82 : //R button
+//             if (event.ctrlKey) 
+//             {
+//                 event.returnValue = false;
                 
-                return false;
-            }
-    }
-}
+//                 return false;
+//             }
+//     }
+// }
 
 
 
@@ -99,7 +95,7 @@ window.addEventListener('popstate', e => {
   
   if (e.state !== null) {
     console.log('not null');
-    selectBox(e.state.id);
+    selectPage(e.state.id);
     if(window.history.state == "home"){
       array[0].classList.add('active'); // home active
       page.change(new homeState);
@@ -118,12 +114,12 @@ window.addEventListener('popstate', e => {
   }
   else{
     console.log('null');
-    selectBox(null);
+    selectPage(null);
   }
 });
 
 // TESTING
-function selectBox(id){
+function selectPage(id){
   let links = Array.from(document.getElementsByClassName('nav-link'));
   
   links.forEach(b => {
@@ -141,8 +137,8 @@ home.addEventListener('click', (e) => {
 
   result === true && (
     page.change(new homeState),
-    history.pushState('home', 'Selected: home', '/home' ),
-    selectBox('home')
+    history.pushState('home', 'Selected: home', './home' ),
+    selectPage('home')
     )  // set page as active if result true
     e.preventDefault();
 });
@@ -150,9 +146,10 @@ home.addEventListener('click', (e) => {
 
 // Nav - home
 navLogo.addEventListener('click', (e) => {
-  checkIfActivePage(e); // checking if active
+  //checkIfActivePage(e); // checking if active
 
-  result === true && page.change(new homeState);  // set page as active if result true
+  //result === true && page.change(new homeState);  // set page as active if result true
+  e.preventDefault();
 })
 
 
@@ -164,8 +161,8 @@ about.addEventListener('click', (e) => {
 
   result === true && (
     page.change(new aboutState),
-    history.pushState('about', 'Selected: about', '/about' ),
-    selectBox('about')
+    history.pushState('about', 'Selected: about', './about' ),
+    selectPage('about')
     )  // set page as active if result true
    e.preventDefault();
 });
@@ -179,8 +176,8 @@ hero.addEventListener('click', (e) => {
 
   result === true && (
     page.change(new heroState),
-    history.pushState('hero', 'Selected: hero', '/hero' ),
-    selectBox('hero')
+    history.pushState('hero', 'Selected: hero', './hero' ),
+    selectPage('hero')
     )  // set page as active if result true
    e.preventDefault();
 });

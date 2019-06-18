@@ -42,7 +42,7 @@ export const heroState = function(page) {
     if (e.state !== null) {
       console.log('not hero state null');
       selectBoxHero(e.state.id);
-      if(window.history.state == "hero/1"){
+      if(window.history.state == "./hero/1"){
         
         subPage.change(new heroPage1);
       } else{
@@ -78,7 +78,7 @@ export const heroState = function(page) {
             selectBoxHero('hero/1');
             document.querySelectorAll('.nav-item')[1].classList.remove('active'); // remove active from hero main
           
-            history.pushState('hero/1', 'Selected: hero/1', '/hero/1' );
+            history.pushState('hero/1', 'Selected: hero/1', './hero/1' );
             subPage.change(new heroPage1);
             
             e.preventDefault();

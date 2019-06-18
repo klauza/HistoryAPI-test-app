@@ -1,7 +1,7 @@
 // Home State
 export const homeState = function() {
   
-  window.location.hash = '#';
+  
   document.querySelector('#heading').textContent = 'Home';
   document.querySelector('#content').innerHTML = `
   <p id="title">Just a simple home page, welcome to my sandbox. <br/>
@@ -17,7 +17,7 @@ export const homeState = function() {
 const DomLoad = document.addEventListener('DOMContentLoaded', () => {
 
   // starting layout
-  document.body.style.backgroundColor = "black";
+  document.body.style.backgroundColor = "white";
 
   document.querySelector('.navbar').style.transform = "translateY(-100px)";
   
