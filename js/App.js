@@ -72,28 +72,6 @@ const home = document.getElementById('home'),
 
 
 
-
-// Prevent from refresh the page
-// document.onkeydown = function() 
-// {
-//     switch (event.keyCode) 
-//     {
-//         case 116 : //F5 button
-//             event.returnValue = false;
-            
-//             return false;
-//         case 82 : //R button
-//             if (event.ctrlKey) 
-//             {
-//                 event.returnValue = false;
-                
-//                 return false;
-//             }
-//     }
-// }
-
-
-
 window.addEventListener('popstate', e => {
   // delete all actives
   let array = document.querySelectorAll('.nav-item');
@@ -164,6 +142,18 @@ navLogo.addEventListener('click', (e) => {
 })
 
 
+// Hero
+hero.addEventListener('click', (e) => {
+  e.preventDefault();
+  checkIfActivePage(e); // checking if active
+
+  result === true && (
+    page.change(new heroState),
+    history.pushState('hero', 'Selected: hero', `${$Host}/hero` ),
+    selectPage('hero')
+    )  // set page as active if result true
+   e.preventDefault();
+});
 
 // About
 about.addEventListener('click', (e) => {
@@ -180,21 +170,9 @@ about.addEventListener('click', (e) => {
 
 
 
-// Hero
-hero.addEventListener('click', (e) => {
-  e.preventDefault();
-  checkIfActivePage(e); // checking if active
-
-  result === true && (
-    page.change(new heroState),
-    history.pushState('hero', 'Selected: hero', `${$Host}/hero` ),
-    selectPage('hero')
-    )  // set page as active if result true
-   e.preventDefault();
-});
 
 
-
+// Subpages in /hero
 // create hidden <a> element in a very unprofessional way
 // <a id="card-1" class="hero-link" href="#">Link</a>
 export const storeAtag = document.createElement('a')

@@ -1,4 +1,4 @@
-##### This is a playground, sandbox, a container of some of my minor projects created mainly with CSS.
-##### JS state pattern has been used. Single page application.
+##### About content of this project: This is a playground, sandbox, a container of some of my minor projects created mainly with CSS.
+##### Technicals: Single page application. State Module Pattern has been used. For navigation, page is using 'history.state'.
 ##### current live version: `none` 
-##### helpful commands: `gulp watch` 
+##### commands: `gulp watch` - provide local environment support - sass compiler, local server, browser-sync

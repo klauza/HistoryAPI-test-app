@@ -3,30 +3,18 @@ import { storeAtag } from './App.js';
 
 
 
-
 // Contact State
 export const heroState = function(page) {
-  console.log('2 ',storeAtag); //read
+  
   document.querySelector('#heading').textContent = 'Hero pages';
   
-  
-  
+  // inject loader on page init
   const injectLoader = `<img src="https://www.airport-budapest.info/images/loading.gif" />`;
   
 
-  // State for sub pages of Hero page
-  let currentSubState;
-  const PageSubState = function() {
-  
-    this.change = function(state) {
-      currentSubState = state;
-    }
-  };
-  const subPage = new PageSubState();
-
-
-
-
+    // if click any nav link before page loads, break the animation, because the animation occurs on another page
+    // let linksNav = Array.from(document.getElementsByClassName('nav-link'));
+    // console.log(linksNav);
 
 
   loader(storeAtag)
@@ -34,42 +22,28 @@ export const heroState = function(page) {
     .catch(err => console.log(err));
 
 
+    
 
-  // -------- FUNCTIONS -------- //
-
-  // window.addEventListener('popstate', e => {
-
-  //   if (e.state !== null) {
-  //     console.log('not hero state null');
-  //     selectBoxHero(e.state.id);
-  //     console.log(window.history.state);
-  //     if(window.history.state == "./hero/1"){
-        
-  //       subPage.change(new heroPage1);
-  //     } else{
-  //       console.log('null hero');
-  //       selectBoxHero(null);
-  //     }
-  //  }
-  // });
 
   // LOADER
   async function loader(storeAtag){
     
     const promise = new Promise((resolve, reject) => {
       document.querySelector('#content').innerHTML = injectLoader;  // Puts loader at start
-    
+      
 
       let objImg = new Image();           // init Image [biggest one]
       objImg.src = '../media/test.jpg';   // init src of Image
       
       objImg.onload = function() {        // when image is loaded.. show the page
 
+       
+
 
         // PAGE LOADED!
         setTimeout(function(){
           console.log('Hero loaded');
-          console.log(storeAtag); //read
+          
           // Inject Dom
           animateAndInjectHeroPage();
 
@@ -80,7 +54,7 @@ export const heroState = function(page) {
             storeAtag.click();
             e.preventDefault();
           })
-
+          
         }, 250);
       }
     });
@@ -95,7 +69,7 @@ export const heroState = function(page) {
     }
   }
 
-  // ANIMATION entry
+  // ANIMATION entry on page init
   const animateAndInjectHeroPage = () => {
     
     injectDom(true);  // inject hero content after images will be loaded
@@ -112,10 +86,12 @@ export const heroState = function(page) {
     }, 500);
   }
 
+
+
   // DOM FUNCTION INJECT
   const injectDom = function(bool){
   
-    if(bool == true){
+    if(bool){
     document.querySelector('#content').innerHTML = `
     <p>This is hero page</p>
   
