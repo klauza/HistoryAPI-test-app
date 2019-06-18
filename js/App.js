@@ -1,6 +1,13 @@
 import { homeState } from './home.js';
 import { aboutState } from './about.js';
 import { heroState } from './hero.js';
+import { heroPage1 } from './hero-pages/heroPage1.js';
+
+
+// For elegance 
+var $Host = "";          // localhost
+// var $Host = "/Boot";  // live server
+
 
 // show hidden nav-bar
 document.querySelector('nav').classList.remove("d-none");
@@ -11,8 +18,9 @@ let result;
 
 // constructor
 const PageState = function() {
+  let loc = location.origin;
   currentState = new homeState(this);
-  history.pushState('home', 'Selected: home', './home' );
+  history.pushState('home', 'Selected: home', `${$Host}/home` );
 
   this.init = function() {
     this.change(new homeState);
@@ -110,11 +118,14 @@ window.addEventListener('popstate', e => {
       array[2].classList.add('active');
       page.change(new aboutState);
       
-    }  
-  }
-  else{
-    console.log('null');
-    selectPage(null);
+    } else
+    if(window.history.state == "hero/1"){
+      page.change(new heroPage1);
+      console.log('switch to heropage1');
+    } else{
+      console.log('null');
+      selectPage(null);
+    }
   }
 });
 
@@ -137,7 +148,7 @@ home.addEventListener('click', (e) => {
 
   result === true && (
     page.change(new homeState),
-    history.pushState('home', 'Selected: home', './home' ),
+    history.pushState('home', 'Selected: home', `${$Host}/home` ),
     selectPage('home')
     )  // set page as active if result true
     e.preventDefault();
@@ -161,7 +172,7 @@ about.addEventListener('click', (e) => {
 
   result === true && (
     page.change(new aboutState),
-    history.pushState('about', 'Selected: about', './about' ),
+    history.pushState('about', 'Selected: about', `${$Host}/about` ),
     selectPage('about')
     )  // set page as active if result true
    e.preventDefault();
@@ -176,9 +187,32 @@ hero.addEventListener('click', (e) => {
 
   result === true && (
     page.change(new heroState),
-    history.pushState('hero', 'Selected: hero', './hero' ),
+    history.pushState('hero', 'Selected: hero', `${$Host}/hero` ),
     selectPage('hero')
     )  // set page as active if result true
    e.preventDefault();
 });
 
+
+
+// create hidden <a> element in a very unprofessional way
+// <a id="card-1" class="hero-link" href="#">Link</a>
+export const storeAtag = document.createElement('a')
+storeAtag.innerText = 'link-1';
+storeAtag.id = 'card-1-test';
+storeAtag.classList.add('hero-link');
+storeAtag.setAttribute('href', '#');
+
+
+
+
+storeAtag.addEventListener('click', (e) => {
+
+   document.querySelectorAll('.nav-item')[1].classList.remove('active'); // remove active underline from hero main
+
+    page.change(new heroPage1);
+    history.pushState('hero/1', 'Selected: hero/1', `${$Host}/hero/1` );
+    selectPage('hero/1');
+   
+   e.preventDefault();
+});

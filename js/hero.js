@@ -1,12 +1,12 @@
-// import subpages
-import { heroPage1 } from './hero-pages/heroPage1.js';
+// import hero/subpage link events
+import { storeAtag } from './App.js';
 
 
 
 
 // Contact State
 export const heroState = function(page) {
-    
+  console.log('2 ',storeAtag); //read
   document.querySelector('#heading').textContent = 'Hero pages';
   
   
@@ -29,7 +29,7 @@ export const heroState = function(page) {
 
 
 
-  loader()
+  loader(storeAtag)
     .then(res => console.log(res) )
     .catch(err => console.log(err));
 
@@ -37,23 +37,24 @@ export const heroState = function(page) {
 
   // -------- FUNCTIONS -------- //
 
-  window.addEventListener('popstate', e => {
+  // window.addEventListener('popstate', e => {
 
-    if (e.state !== null) {
-      console.log('not hero state null');
-      selectBoxHero(e.state.id);
-      if(window.history.state == "./hero/1"){
+  //   if (e.state !== null) {
+  //     console.log('not hero state null');
+  //     selectBoxHero(e.state.id);
+  //     console.log(window.history.state);
+  //     if(window.history.state == "./hero/1"){
         
-        subPage.change(new heroPage1);
-      } else{
-        console.log('null hero');
-        selectBoxHero(null);
-      }
-   }
-  });
+  //       subPage.change(new heroPage1);
+  //     } else{
+  //       console.log('null hero');
+  //       selectBoxHero(null);
+  //     }
+  //  }
+  // });
 
   // LOADER
-  async function loader(){
+  async function loader(storeAtag){
     
     const promise = new Promise((resolve, reject) => {
       document.querySelector('#content').innerHTML = injectLoader;  // Puts loader at start
@@ -68,6 +69,7 @@ export const heroState = function(page) {
         // PAGE LOADED!
         setTimeout(function(){
           console.log('Hero loaded');
+          console.log(storeAtag); //read
           // Inject Dom
           animateAndInjectHeroPage();
 
@@ -75,12 +77,7 @@ export const heroState = function(page) {
           const cardOne = document.getElementById('card-1');  
           
           cardOne.addEventListener('click', (e) => {
-            selectBoxHero('hero/1');
-            document.querySelectorAll('.nav-item')[1].classList.remove('active'); // remove active from hero main
-          
-            history.pushState('hero/1', 'Selected: hero/1', './hero/1' );
-            subPage.change(new heroPage1);
-            
+            storeAtag.click();
             e.preventDefault();
           })
 
@@ -163,14 +160,14 @@ export const heroState = function(page) {
     }
   }
 
-  function selectBoxHero(id){
-    let links = Array.from(document.getElementsByClassName('hero-link'));
-    console.log(links);
+  // function selectBoxHero(id){
+  //   let links = Array.from(document.getElementsByClassName('hero-link'));
+  //   console.log(links);
     
-    links.forEach(b => {
-      b.classList.toggle('selected', b.id === id);
-    });
-  }
+  //   links.forEach(b => {
+  //     b.classList.toggle('selected', b.id === id);
+  //   });
+  // }
 
 };
 
