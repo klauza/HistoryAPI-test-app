@@ -1,8 +1,11 @@
-
-// PAGES
 import { homeState } from './home.js';
 import { aboutState } from './about.js';
 import { heroState } from './hero.js';
+
+// PAGES
+
+
+
 
 
 
@@ -13,13 +16,14 @@ let result;
 // constructor
 const PageState = function() {
   currentState = new homeState(this);
-
+  history.pushState('home', 'Selected: home', '/home' );
   // this.init = function() {
   //   window.location.hash = "#";
   //   this.change(new homeState);
   // }
 
   this.change = function(state) {
+    //console.log(state);
     currentState = state;
   }
 };
@@ -60,23 +64,87 @@ const home = document.getElementById('home'),
       hero = document.getElementById('hero'),
       navLogo = document.querySelector('.navbar-brand');
 
-    
+
+
+
+
+
+// Prevent from refresh the page
+document.onkeydown = function() 
+{
+    switch (event.keyCode) 
+    {
+        case 116 : //F5 button
+            event.returnValue = false;
+            
+            return false;
+        case 82 : //R button
+            if (event.ctrlKey) 
+            {
+                event.returnValue = false;
+                
+                return false;
+            }
+    }
+}
+
+
+
+window.addEventListener('popstate', e => {
+  // delete all actives
+  let array = document.querySelectorAll('.nav-item');
+  array.forEach(function(liItem){
+    liItem.classList.remove('active');
+  })
+  
+  if (e.state !== null) {
+    console.log('not null');
+    selectBox(e.state.id);
+    if(window.history.state == "home"){
+      array[0].classList.add('active'); // home active
+      page.change(new homeState);
+
+    } else
+    if(window.history.state == "hero"){
+      array[1].classList.add('active');
+      page.change(new heroState);
+
+    } else 
+    if(window.history.state == "about"){
+      array[2].classList.add('active');
+      page.change(new aboutState);
+      
+    }  
+  }
+  else{
+    console.log('null');
+    selectBox(null);
+  }
+});
+
+// TESTING
+function selectBox(id){
+  let links = Array.from(document.getElementsByClassName('nav-link'));
+  
+  links.forEach(b => {
+    b.classList.toggle('selected', b.id === id);
+  });
+}
+
 
 
 // Page Event Listeners
 // Home
 home.addEventListener('click', (e) => {
+  
   checkIfActivePage(e); // checking if active
 
-  function selectBox(id){
-    let links = Array.from(document.getElementsByClassName('nav-item'));
-    links.forEach(b => {
-      b.classList.toggle('selected', b.id === id);
-    });
-  }
-
-  result === true && page.change(new homeState)  // set page as active if result true
-  // e.preventDefault();
+  result === true && (
+    page.change(new homeState),
+    history.pushState('home', 'Selected: home', '/home' ),
+    selectBox('home')
+    )  // set page as active if result true
+    e.preventDefault();
 });
 
 
@@ -91,19 +159,29 @@ navLogo.addEventListener('click', (e) => {
 
 // About
 about.addEventListener('click', (e) => {
+  e.preventDefault();
   checkIfActivePage(e); // checking if active
 
-  result === true && page.change(new aboutState);  // set page as active if result true
-  // e.preventDefault();
+  result === true && (
+    page.change(new aboutState),
+    history.pushState('about', 'Selected: about', '/about' ),
+    selectBox('about')
+    )  // set page as active if result true
+   e.preventDefault();
 });
 
 
 
 // Hero
 hero.addEventListener('click', (e) => {
+  e.preventDefault();
   checkIfActivePage(e); // checking if active
 
-  result === true && page.change(new heroState);  // set page as active if result true
-  // e.preventDefault();
+  result === true && (
+    page.change(new heroState),
+    history.pushState('hero', 'Selected: hero', '/hero' ),
+    selectBox('hero')
+    )  // set page as active if result true
+   e.preventDefault();
 });
 

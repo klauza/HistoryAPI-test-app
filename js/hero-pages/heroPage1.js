@@ -4,14 +4,32 @@ export const heroPage1 = function() {
 
   // stop page loading on nav link click
   document.querySelector('#home').addEventListener('click', function(){
-    clearInterval(x);
+    clearInterval(initPage);
   });
   document.querySelector('#hero').addEventListener('click', function(){
-    clearInterval(x);
+    clearInterval(initPage);
   });
   document.querySelector('#about').addEventListener('click', function(){
-    clearInterval(x);
+    clearInterval(initPage);
   });
+
+
+  // back
+  document.onkeyup = function() 
+  {
+      switch (event.keyCode) 
+      {
+        case 27 :  //esc
+        clearInterval(initPage);
+        document.querySelector('#hero').click();
+
+        case 8 :  // backspace
+        clearInterval(initPage);
+        document.querySelector('#hero').click();
+      }
+  }
+
+
 
 
   let dom = `
@@ -73,16 +91,16 @@ export const heroPage1 = function() {
   document.querySelector('#heading').textContent = 'hero page 1';
 
 
-  let count = 99;
+  let count = 1;
   document.querySelector('#content').innerHTML = `
     <div style="height: 100vh; background: black;">
-      <h2 style="color: white">${count+1}</h2>
+      <h2 style="color: white">${count}</h2>
     </div>
     `;
 
 
 
-  var x = setInterval(function() {
+  let initPage = setInterval(function() {
    
     document.querySelector('#content').innerHTML = `
     <div style="height: 100vh; background: black;">
@@ -90,28 +108,22 @@ export const heroPage1 = function() {
     </div>
     `;
 
-    count = count - 1;
+    count--;
     console.log(count);
-    if (count < 0) {
-      clearInterval(x);
+    if (count < 1) {
+      clearInterval(initPage);
       document.querySelector('#content').innerHTML = dom;
 
+      // go back button
       document.querySelector('.back-btn-to-main').addEventListener('click', function(e){
-
-        console.log('change to hero somehow');
-    
+        document.querySelector('#hero').click();
         e.preventDefault();
       })
     }
 
-  }, 25)
+  }, 500);
 
 
-
-
-
-
-
-
+  
 };
 

@@ -10,52 +10,8 @@ export const heroState = function(page) {
   document.querySelector('#heading').textContent = 'Hero pages';
   
   
- 
-  const injectLoader = `
-  <img src="https://www.airport-budapest.info/images/loading.gif" />`;
   
-
-  const injectDom = `
-  <p>This is hero page</p>
-  
-
-  
-  <div class="row">
-  <div class="col-sm">
-    <div class="card col-sm" style="width: 18rem;">
-      <img src="../media/test.jpg" class="card-img-top img-test-1" alt="...">
-      <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a id="card-1" class="nav-link" href="#/hero/hero-page1">Link</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-sm">
-    <div class="card col-sm" style="width: 18rem;">
-      <img src="../media/test.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        
-      </div>
-    </div>
-  </div>
-  
-  <div class="col-sm">
-    <div class="card col-sm" style="width: 18rem;">
-      <img src="../media/test.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-    </div>
-  </div>
-
-  
-
-  </div>
-  <p> big, 14mb picture over here and page is waiting for it to load</p>
-  <img src="../media/test.jpg" class="card-img-top img-test-1" alt="...">
-  `;
+  const injectLoader = `<img src="https://www.airport-budapest.info/images/loading.gif" />`;
   
 
   // State for sub pages of Hero page
@@ -71,6 +27,30 @@ export const heroState = function(page) {
 
 
 
+
+
+  loader()
+    .then(res => console.log(res) )
+    .catch(err => console.log(err));
+
+
+
+  // -------- FUNCTIONS -------- //
+
+  window.addEventListener('popstate', e => {
+
+    if (e.state !== null) {
+      console.log('not hero state null');
+      selectBoxHero(e.state.id);
+      if(window.history.state == "hero/1"){
+        
+        subPage.change(new heroPage1);
+      } else{
+        console.log('null hero');
+        selectBoxHero(null);
+      }
+   }
+  });
 
   // LOADER
   async function loader(){
@@ -95,10 +75,15 @@ export const heroState = function(page) {
           const cardOne = document.getElementById('card-1');  
           
           cardOne.addEventListener('click', (e) => {
+            selectBoxHero('hero/1');
             document.querySelectorAll('.nav-item')[1].classList.remove('active'); // remove active from hero main
           
+            history.pushState('hero/1', 'Selected: hero/1', '/hero/1' );
             subPage.change(new heroPage1);
+            
+            e.preventDefault();
           })
+
         }, 250);
       }
     });
@@ -113,18 +98,10 @@ export const heroState = function(page) {
     }
   }
 
-
-  loader()
-    .then(res => console.log(res) )
-    .catch(err => console.log(err));
-
-
-
-
-
   // ANIMATION entry
   const animateAndInjectHeroPage = () => {
-    document.querySelector('#content').innerHTML = injectDom; // inject hero content after images will be loaded
+    
+    injectDom(true);  // inject hero content after images will be loaded
 
     document.querySelector('#content').style.transform = 'translateX(100px)';
     document.querySelector('#content').style.opacity = '0';
@@ -135,12 +112,66 @@ export const heroState = function(page) {
       document.querySelector('#content').style.transform = 'translateX(0)';
       document.querySelector('#content').style.transition = '500ms all ease';
 
-    }, 500)
-    
-    
-    const testQuery = document.querySelector('.img-test-1');
-    console.log(testQuery);
+    }, 500);
   }
+
+  // DOM FUNCTION INJECT
+  const injectDom = function(bool){
+  
+    if(bool == true){
+    document.querySelector('#content').innerHTML = `
+    <p>This is hero page</p>
+  
+    <div class="row">
+    <div class="col-sm">
+      <div class="card col-sm" style="width: 18rem;">
+        <img src="../media/test.jpg" class="card-img-top img-test-1" alt="...">
+        <div class="card-body">
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a id="card-1" class="hero-link" href="#">Link</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm">
+      <div class="card col-sm" style="width: 18rem;">
+        <img src="../media/test.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-sm">
+      <div class="card col-sm" style="width: 18rem;">
+        <img src="../media/test.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+      </div>
+    </div>
+
+    
+
+    </div>
+    <p> big, 14mb picture over here and page is waiting for it to load</p>
+    <img src="../media/test.jpg" class="card-img-top img-test-1" alt="...">
+    `;
+    } else {
+      console.log('bool is false');
+    }
+  }
+
+  function selectBoxHero(id){
+    let links = Array.from(document.getElementsByClassName('hero-link'));
+    console.log(links);
+    
+    links.forEach(b => {
+      b.classList.toggle('selected', b.id === id);
+    });
+  }
+
 };
 
 
