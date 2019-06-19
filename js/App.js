@@ -14,7 +14,7 @@ document.querySelector('nav').classList.remove("d-none");
 
 
 let currentState;
-let result; 
+let result;
 
 // constructor
 const PageState = function() {

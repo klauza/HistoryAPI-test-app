@@ -29,9 +29,16 @@ body{
     min-height: 100%;
 }
 
+.centered{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 .active{
   border-bottom: 1px solid black;
 }
+
+
 // h1{
 //   color: $light-green;
 //   text-align: center;

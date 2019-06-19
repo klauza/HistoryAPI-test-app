@@ -4,8 +4,11 @@ export const homeState = function() {
   
   document.querySelector('#heading').textContent = 'Home';
   document.querySelector('#content').innerHTML = `
-  <p id="title">Just a simple home page, welcome to my sandbox. <br/>
-  The page contains State Pattern, so be aware that it violates browser-back-button which therefore won't work here - use our navigation instead!</p> 
+  <div class="container">
+  <h2 id="home-title">Home</h2>
+    <p id="title">Just a simple home page, welcome to my sandbox. <br/>
+    The page contains State Pattern, so be aware that it violates browser-back-button which therefore won't work here - use our navigation instead!</p> 
+  </div>
   `;
 
   DomLoad; // init animations
@@ -21,8 +24,8 @@ const DomLoad = document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelector('.navbar').style.transform = "translateY(-100px)";
   
-  document.querySelector('#heading').style.transform = "translateX(-100px)";
-  document.querySelector('#heading').style.opacity = "0";
+  document.querySelector('#home-title').style.transform = "translateX(-100px)";
+  document.querySelector('#home-title').style.opacity = "0";
 
   document.querySelector('#title').style.transform = "translateX(-100px)";
   document.querySelector('#title').style.opacity = "0";
@@ -48,7 +51,7 @@ const DomLoad = document.addEventListener('DOMContentLoaded', () => {
       opacity: 1; 
       transition: 200ms all ease-in-out;
     `;
-    document.querySelector('#heading').style.cssText = headerCss;
+    document.querySelector('#home-title').style.cssText = headerCss;
 
 
     const titleCss = `

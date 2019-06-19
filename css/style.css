@@ -25,6 +25,11 @@ body {
   background-color: #fff;
   min-height: 100%; }
 
+.centered {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
 .active {
   border-bottom: 1px solid black; }
 

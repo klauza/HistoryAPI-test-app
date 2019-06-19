@@ -1,20 +1,25 @@
 // import hero/subpage link events
 import { storeAtag } from './App.js';
 
-
+   // if click any nav link before page loads, break the animation, because the animation occurs on another page
+     // tRY TO DISABLE THE BUTTONS WHEN ANIMATION STARTS
+      //  let linksNav = Array.from(document.getElementsByClassName('nav-link'));
+      //  console.log(linksNav);
 
 // Contact State
 export const heroState = function(page) {
   
-  document.querySelector('#heading').textContent = 'Hero pages';
+  document.querySelector('#heading').textContent = 'Hero';
   
   // inject loader on page init
-  const injectLoader = `<img src="https://www.airport-budapest.info/images/loading.gif" />`;
+  const injectLoader = `
+  <div class="container">
+    <img class="centered" style="text-align:center;" src="https://www.airport-budapest.info/images/loading.gif" />
+  </div>
+  `;
   
 
-    // if click any nav link before page loads, break the animation, because the animation occurs on another page
-    // let linksNav = Array.from(document.getElementsByClassName('nav-link'));
-    // console.log(linksNav);
+   
 
 
   loader(storeAtag)
@@ -37,11 +42,11 @@ export const heroState = function(page) {
       
       objImg.onload = function() {        // when image is loaded.. show the page
 
-       
+    
 
 
         // PAGE LOADED!
-        setTimeout(function(){
+        setTimeout(function(){   // minimum time for spinner
           console.log('Hero loaded');
           
           // Inject Dom
@@ -55,7 +60,7 @@ export const heroState = function(page) {
             e.preventDefault();
           })
           
-        }, 250);
+        }, 450); 
       }
     });
 
@@ -74,7 +79,7 @@ export const heroState = function(page) {
     
     injectDom(true);  // inject hero content after images will be loaded
 
-    document.querySelector('#content').style.transform = 'translateX(100px)';
+    document.querySelector('#content').style.transform = 'translateY(100px)';
     document.querySelector('#content').style.opacity = '0';
     document.querySelector('#content').style.transition = 'none';
 
@@ -83,7 +88,7 @@ export const heroState = function(page) {
       document.querySelector('#content').style.transform = 'translateX(0)';
       document.querySelector('#content').style.transition = '500ms all ease';
 
-    }, 500);
+    }, 50);
   }
 
 
@@ -93,43 +98,45 @@ export const heroState = function(page) {
   
     if(bool){
     document.querySelector('#content').innerHTML = `
-    <p>This is hero page</p>
-  
-    <div class="row">
-    <div class="col-sm">
-      <div class="card col-sm" style="width: 18rem;">
+    <div class="container">
+      <p>This is hero page</p>
+
+      <div class="row">
+        <div class="col-sm">
+          <div class="card col-sm" style="width: 18rem;">
+            <img src="../media/test.jpg" class="card-img-top img-test-1" alt="...">
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a id="card-1" class="hero-link" href="#">Link</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm">
+          <div class="card col-sm" style="width: 18rem;">
+            <img src="../media/test.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-sm">
+          <div class="card col-sm" style="width: 18rem;">
+            <img src="../media/test.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+        
+        
+        <p> big, 14mb picture over here and page is waiting for it to load</p>
         <img src="../media/test.jpg" class="card-img-top img-test-1" alt="...">
-        <div class="card-body">
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a id="card-1" class="hero-link" href="#">Link</a>
-        </div>
       </div>
-    </div>
-
-    <div class="col-sm">
-      <div class="card col-sm" style="width: 18rem;">
-        <img src="../media/test.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          
-        </div>
-      </div>
-    </div>
     
-    <div class="col-sm">
-      <div class="card col-sm" style="width: 18rem;">
-        <img src="../media/test.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-      </div>
-    </div>
-
-    
-
-    </div>
-    <p> big, 14mb picture over here and page is waiting for it to load</p>
-    <img src="../media/test.jpg" class="card-img-top img-test-1" alt="...">
     `;
     } else {
       console.log('bool is false');
