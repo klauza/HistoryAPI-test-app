@@ -112,7 +112,7 @@ export const heroState = function(page) {
           <div class="card col-sm">
             <img src="../media/pic1-hero.jpg" class="mt-2 card-img-top img-test-1" alt="pic1">
             <div class="card-body">
-              <p class="card-text">Hero page made with animations. Only opacity and transform.</p>
+              <p class="card-text">Made with significant amount of opacity and transform animations</p>
               <button id="card-1" class="hero-link btn btn-outline-success" type="button">See prototype</button>
             </div>
           </div>

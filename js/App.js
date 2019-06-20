@@ -175,7 +175,7 @@ about.addEventListener('click', (e) => {
 // Subpages in /hero
 // create hidden <a> element in a very unprofessional way
 // <a id="card-1" class="hero-link" href="#">Link</a>
-export const storeAtag = document.createElement('a')
+export const storeAtag = document.createElement('a');
 storeAtag.innerText = 'link-1';
 storeAtag.id = 'card-1-test';
 storeAtag.classList.add('hero-link');
@@ -186,6 +186,10 @@ storeAtag.setAttribute('href', '#');
 
 storeAtag.addEventListener('click', (e) => {
 
+  window.scrollTo(0, 65);
+
+  //65px w dół
+
    document.querySelectorAll('.nav-item')[1].classList.remove('active'); // remove active underline from hero main
 
     page.change(new heroPage1);
@@ -194,3 +198,23 @@ storeAtag.addEventListener('click', (e) => {
    
    e.preventDefault();
 });
+
+
+
+  /* NAV ICONS ANIMATION */
+  document.querySelector('.icons-container').addEventListener('mouseenter', (e) => {
+    e.target.style.backgroundColor = '#eaeaea';
+    const icons = Array.from(e.target.children);
+    icons.map((icon) => {
+      icon.style.animationPlayState='paused';
+    })
+
+  });
+  document.querySelector('.icons-container').addEventListener('mouseleave', (e) => {
+    e.target.style.backgroundColor = '';
+    const icons = Array.from(e.target.children);
+    icons.map((icon) => {
+      icon.style.animationPlayState='running';
+    })
+
+  });

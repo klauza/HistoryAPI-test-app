@@ -7,8 +7,8 @@ export const homeState = function() {
   <div class="container">
     <h2 class="text-center" id="home-title">Home</h2>
     <p class="text-center" id="title">Welcome to my sandbox <br/>
-    The page is set on State Pattern <br/>
-    Go to 'about' page to learn more</p> 
+    The content of this project is not important <br/>
+    Go to <strong>about</strong> page to learn more</p> 
   </div>
   `;
 
