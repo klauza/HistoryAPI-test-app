@@ -2,12 +2,13 @@
 export const homeState = function() {
   
   
-  document.querySelector('#heading').textContent = 'Home';
+  document.querySelector('#heading').textContent = '';
   document.querySelector('#content').innerHTML = `
   <div class="container">
-  <h2 id="home-title">Home</h2>
-    <p id="title">Just a simple home page, welcome to my sandbox. <br/>
-    The page contains State Pattern, so be aware that it violates browser-back-button which therefore won't work here - use our navigation instead!</p> 
+    <h2 class="text-center" id="home-title">Home</h2>
+    <p class="text-center" id="title">Welcome to my sandbox <br/>
+    The page is set on State Pattern <br/>
+    Go to 'about' page to learn more</p> 
   </div>
   `;
 

@@ -1,0 +1,29 @@
+.hero-main{
+  padding-bottom: 50px;
+  .card-img-top{
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+  .hero-link:hover{
+    cursor: pointer;
+  }
+  .hero-link[disabled]:hover{
+    cursor: default;
+  }
+
+ .col-sm .card{
+    width: 18rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+  @media (max-width: 768px){
+    .col-sm .card{
+      width: 100%;
+    }
+  }
+
+}

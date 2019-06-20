@@ -33,6 +33,26 @@ body {
 .active {
   border-bottom: 1px solid black; }
 
+.hero-main {
+  padding-bottom: 50px; }
+  .hero-main .card-img-top {
+    width: 100%;
+    height: 150px;
+    -o-object-fit: cover;
+       object-fit: cover; }
+  .hero-main .hero-link:hover {
+    cursor: pointer; }
+  .hero-main .hero-link[disabled]:hover {
+    cursor: default; }
+  .hero-main .col-sm .card {
+    width: 18rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto; }
+  @media (max-width: 768px) {
+    .hero-main .col-sm .card {
+      width: 100%; } }
+
 .body-page1 {
   margin: 0;
   padding: 0;

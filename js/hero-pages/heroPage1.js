@@ -88,7 +88,7 @@ export const heroPage1 = function() {
 `;
 
 
-  document.querySelector('#heading').textContent = 'hero page 1';
+  document.querySelector('#heading').textContent = '';
 
 
   let count = 1;

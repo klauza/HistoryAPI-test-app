@@ -9,7 +9,7 @@ import { storeAtag } from './App.js';
 // Contact State
 export const heroState = function(page) {
   
-  document.querySelector('#heading').textContent = 'Hero';
+  document.querySelector('#heading').textContent = '';
   
   // inject loader on page init
   const injectLoader = `
@@ -38,7 +38,7 @@ export const heroState = function(page) {
       
 
       let objImg = new Image();           // init Image [biggest one]
-      objImg.src = '../media/test.jpg';   // init src of Image
+      objImg.src = '../media/pic1-hero.jpg';   // init src of Image
       
       objImg.onload = function() {        // when image is loaded.. show the page
 
@@ -98,43 +98,77 @@ export const heroState = function(page) {
   
     if(bool){
     document.querySelector('#content').innerHTML = `
-    <div class="container">
-      <p>This is hero page</p>
+    <div class="container hero-main">
+
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4 text-center">Single hero pages</h1>
+          <p class="lead text-center">This is a collection of hero single pages</p>
+        </div>
+      </div>
 
       <div class="row">
-        <div class="col-sm">
-          <div class="card col-sm" style="width: 18rem;">
-            <img src="../media/test.jpg" class="card-img-top img-test-1" alt="...">
+        <div class="col-sm mt-2">
+          <div class="card col-sm">
+            <img src="../media/pic1-hero.jpg" class="mt-2 card-img-top img-test-1" alt="pic1">
             <div class="card-body">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a id="card-1" class="hero-link" href="#">Link</a>
+              <p class="card-text">Hero page made with animations. Only opacity and transform.</p>
+              <button id="card-1" class="hero-link btn btn-outline-success" type="button">See prototype</button>
             </div>
           </div>
         </div>
 
-        <div class="col-sm">
-          <div class="card col-sm" style="width: 18rem;">
-            <img src="../media/test.jpg" class="card-img-top" alt="...">
+        <div class="col-sm mt-2">
+          <div class="card col-sm">
+            <img src="../media/pic2-hero.jpg" class="mt-2 card-img-top" alt="pic2">
             <div class="card-body">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              
+              <p class="card-text">Another example of simple hero page.</p>
+              <button id="card-2" class="hero-link btn btn-outline-success" type="button">See prototype</button>
             </div>
           </div>
         </div>
         
-        <div class="col-sm">
-          <div class="card col-sm" style="width: 18rem;">
-            <img src="../media/test.jpg" class="card-img-top" alt="...">
+        <div class="col-sm mt-2">
+          <div class="card col-sm">
+            <img src="../media/pic3-hero.jpg" class="mt-2 card-img-top" alt="pic3">
             <div class="card-body">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <p class="card-text">Here is hero page inspired by microsoft leader John Wick</p>
+              <button id="card-3" class="hero-link btn btn-outline-success" type="button">See prototype</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-sm mt-2">
+          <div class="card col-sm">
+            <img src="../media/in-progress.jpg" class="mt-2 card-img-top" alt="pic4">
+            <div class="card-body">
+              <p class="card-text">In progress...</p>
+              <button id="card-3" disabled class="hero-link btn btn-outline-secondary" type="button">See prototype</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-sm mt-2">
+          <div class="card col-sm">
+            <img src="../media/in-progress.jpg" class="mt-2 card-img-top" alt="pic5">
+            <div class="card-body">
+              <p class="card-text">In progress...</p>
+              <button id="card-3" disabled class="hero-link btn btn-outline-secondary" type="button">See prototype</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-sm mt-2">
+          <div class="card col-sm">
+            <img src="../media/in-progress.jpg" class="mt-2 card-img-top" alt="pic6">
+            <div class="card-body">
+              <p class="card-text">In progress...</p>
+              <button id="card-3" disabled class="hero-link btn btn-outline-secondary" type="button">See prototype</button>
             </div>
           </div>
         </div>
       </div>
         
-        
-        <p> big, 14mb picture over here and page is waiting for it to load</p>
-        <img src="../media/test.jpg" class="card-img-top img-test-1" alt="...">
       </div>
     
     `;
