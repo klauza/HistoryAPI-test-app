@@ -114,7 +114,7 @@ export const heroState = function(page) {
       <div class="row">
         <div class="col-sm mt-2">
           <div class="card col-sm">
-            <img src="../media/pic1-hero.jpg" class="mt-2 card-img-top img-test-1" alt="pic1">
+            <img src="https://port-klauza.com/media/pic1-hero.jpg" class="mt-2 card-img-top img-test-1" alt="pic1">
             <div class="card-body">
               <p class="card-text">Made with significant amount of opacity and transform animations</p>
               <button id="card-1" class="hero-link btn btn-outline-success" type="button">See prototype</button>
@@ -124,7 +124,7 @@ export const heroState = function(page) {
 
         <div class="col-sm mt-2">
           <div class="card col-sm">
-            <img src="../media/pic2-hero.jpg" class="mt-2 card-img-top" alt="pic2">
+            <img src="https://port-klauza.com/media/pic2-hero.jpg" class="mt-2 card-img-top" alt="pic2">
             <div class="card-body">
               <p class="card-text">Another example of simple hero page.</p>
               <button id="card-2" class="hero-link btn btn-outline-success" type="button">See prototype</button>
@@ -134,7 +134,7 @@ export const heroState = function(page) {
         
         <div class="col-sm mt-2">
           <div class="card col-sm">
-            <img src="../media/pic3-hero.jpg" class="mt-2 card-img-top" alt="pic3">
+            <img src="https://port-klauza.com/media/pic3-hero.jpg" class="mt-2 card-img-top" alt="pic3">
             <div class="card-body">
               <p class="card-text">Here is hero page inspired by microsoft leader John Wick</p>
               <button id="card-3" class="hero-link btn btn-outline-success" type="button">See prototype</button>
@@ -144,7 +144,7 @@ export const heroState = function(page) {
         
         <div class="col-sm mt-2">
           <div class="card col-sm">
-            <img src="../media/in-progress.jpg" class="mt-2 card-img-top" alt="pic4">
+            <img src="https://port-klauza.com/media/in-progress.jpg" class="mt-2 card-img-top" alt="pic4">
             <div class="card-body">
               <p class="card-text">In progress...</p>
               <button id="card-3" disabled class="hero-link btn btn-outline-secondary" type="button">See prototype</button>
@@ -154,7 +154,7 @@ export const heroState = function(page) {
         
         <div class="col-sm mt-2">
           <div class="card col-sm">
-            <img src="../media/in-progress.jpg" class="mt-2 card-img-top" alt="pic5">
+            <img src="https://port-klauza.com/media/in-progress.jpg" class="mt-2 card-img-top" alt="pic5">
             <div class="card-body">
               <p class="card-text">In progress...</p>
               <button id="card-3" disabled class="hero-link btn btn-outline-secondary" type="button">See prototype</button>
@@ -164,7 +164,7 @@ export const heroState = function(page) {
         
         <div class="col-sm mt-2">
           <div class="card col-sm">
-            <img src="../media/in-progress.jpg" class="mt-2 card-img-top" alt="pic6">
+            <img src="https://port-klauza.com/media/in-progress.jpg" class="mt-2 card-img-top" alt="pic6">
             <div class="card-body">
               <p class="card-text">In progress...</p>
               <button id="card-3" disabled class="hero-link btn btn-outline-secondary" type="button">See prototype</button>
