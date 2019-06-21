@@ -6,8 +6,8 @@ import { heroPage2 } from './hero-pages/heroPage2.js';
 
 
 // Local - Live environment. Uncomment current
-// var $Host = "";             // localhost
-var $Host = "/coffer";     // live server
+var $Host = "";             // localhost
+// var $Host = "/coffer";     // live server
 
 
 // show hidden nav-bar
@@ -27,6 +27,7 @@ const PageState = function() {
   }
 
   this.change = function(state) {
+    
     currentState = state;
   }
 };
@@ -81,7 +82,7 @@ window.addEventListener('popstate', e => {
     if(window.history.state == "home"){
       array[0].classList.add('active'); // home active
       page.change(new homeState);
-
+     
     } else
     if(window.history.state == "hero"){
       array[1].classList.add('active');
@@ -203,25 +204,4 @@ storeBtag.addEventListener('click', (e) => {
   selectPage('hero/2');
 
   e.preventDefault();
-});
-
-
-
-
-/* NAV ICONS ANIMATION */
-document.querySelector('.icons-container').addEventListener('mouseenter', (e) => {
-  e.target.style.backgroundColor = '#eaeaea';
-  const icons = Array.from(e.target.children);
-  icons.map((icon) => {
-    icon.style.animationPlayState='paused';
-  })
-
-});
-document.querySelector('.icons-container').addEventListener('mouseleave', (e) => {
-  e.target.style.backgroundColor = '';
-  const icons = Array.from(e.target.children);
-  icons.map((icon) => {
-    icon.style.animationPlayState='running';
-  })
-
 });

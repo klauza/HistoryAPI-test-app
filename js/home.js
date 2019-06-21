@@ -4,11 +4,12 @@ export const homeState = function() {
   
   document.querySelector('#heading').textContent = '';
   document.querySelector('#content').innerHTML = `
-  <div class="container">
+  <div class="container home-page">
     <h2 class="text-center" id="home-title">Home</h2>
     <p class="text-center" id="title">Welcome to my sandbox <br/>
     The content of this project is not important <br/>
     Go to <strong>about</strong> page to learn more</p> 
+    <div class="image-div"><img src="./media/main.jpg" /></div>
   </div>
   `;
 
@@ -30,6 +31,9 @@ const DomLoad = document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelector('#title').style.transform = "translateX(-100px)";
   document.querySelector('#title').style.opacity = "0";
+
+  document.querySelector('.image-div').style.transform = "translateY(70px)";
+  document.querySelector('.image-div').style.opacity = "0";
 
 
 
@@ -62,6 +66,14 @@ const DomLoad = document.addEventListener('DOMContentLoaded', () => {
       transition-delay: 500ms;
     `;
     document.querySelector('#title').style.cssText = titleCss;
+
+    const pictureCss = `
+      transform: translateY(0);
+      opacity: 1;
+      transition: 600ms all ease-in-out;
+      transition-delay: 850ms;
+    `;
+    document.querySelector('.image-div').style.cssText = pictureCss;
   }, 500);
   console.log('Dom start');
 })

@@ -5,11 +5,12 @@
   padding: 0; }
 
 html {
-  overflow-y: scroll; }
+  min-height: 100vh; }
 
 body {
-  background-color: #fff;
-  height: 100%; }
+  width: 100%;
+  min-height: 100%;
+  overflow-y: scroll; }
 
 .centered {
   display: block;
@@ -19,67 +20,50 @@ body {
 .active {
   border-bottom: 1px solid black; }
 
+.home-page .image-div {
+  width: 100%;
+  margin-top: 35px;
+  box-shadow: 0px -5px 40px -2px rgba(0, 0, 0, 0.75);
+  overflow: hidden;
+  transition: all 250ms ease-in-out; }
+
+.home-page .image-div:hover img {
+  -webkit-transform: scale(1.2) rotate(7deg);
+          transform: scale(1.2) rotate(7deg); }
+
+.home-page .image-div img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: all 250ms ease-in-out; }
+
 .nav-icon {
   width: 28px;
   position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
-  -webkit-animation: github-animation 1000ms infinite;
-          animation: github-animation 1000ms infinite;
-  opacity: 0.65; }
+  opacity: 0.65;
+  transition: 150ms -webkit-transform ease-in-out;
+  transition: 150ms transform ease-in-out;
+  transition: 150ms transform ease-in-out, 150ms -webkit-transform ease-in-out; }
   .nav-icon:hover {
     opacity: 1;
-    cursor: pointer; }
+    cursor: pointer;
+    -webkit-transform: translateY(-50%) scale(1.1);
+            transform: translateY(-50%) scale(1.1);
+    transition: 150ms -webkit-transform ease-in-out;
+    transition: 150ms transform ease-in-out;
+    transition: 150ms transform ease-in-out, 150ms -webkit-transform ease-in-out; }
 
 .nav-icon:nth-of-type(1) {
-  right: 5%;
-  -webkit-animation-delay: 250ms;
-          animation-delay: 250ms; }
+  right: 5%; }
 
 .nav-icon:nth-of-type(2) {
-  right: calc(50% - 14px);
-  -webkit-animation-delay: 500ms;
-          animation-delay: 500ms; }
+  right: calc(50% - 14px); }
 
 .nav-icon:nth-of-type(3) {
-  left: 5%;
-  -webkit-animation-delay: 750ms;
-          animation-delay: 750ms; }
-
-@-webkit-keyframes github-animation {
-  0% {
-    -webkit-transform: translateY(-50%);
-            transform: translateY(-50%); }
-  25% {
-    -webkit-transform: translateY(-40%);
-            transform: translateY(-40%); }
-  50% {
-    -webkit-transform: translateY(-50%);
-            transform: translateY(-50%); }
-  75% {
-    -webkit-transform: translateY(-60%);
-            transform: translateY(-60%); }
-  100% {
-    -webkit-transform: translateY(-50%);
-            transform: translateY(-50%); } }
-
-@keyframes github-animation {
-  0% {
-    -webkit-transform: translateY(-50%);
-            transform: translateY(-50%); }
-  25% {
-    -webkit-transform: translateY(-40%);
-            transform: translateY(-40%); }
-  50% {
-    -webkit-transform: translateY(-50%);
-            transform: translateY(-50%); }
-  75% {
-    -webkit-transform: translateY(-60%);
-            transform: translateY(-60%); }
-  100% {
-    -webkit-transform: translateY(-50%);
-            transform: translateY(-50%); } }
+  left: 5%; }
 
 .icons-container {
   width: 200px;
@@ -90,7 +74,7 @@ body {
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%); }
 
-@media (max-width: 990px) {
+@media (max-width: 62em) {
   .icons-container {
     display: none; } }
 
