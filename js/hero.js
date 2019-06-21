@@ -41,12 +41,12 @@ export const heroState = function(page) {
 
     
         // prevent from loading #hero page into another state
-        // document.querySelector('#home').addEventListener('click', function(){
-        //   clearTimeout(loadHeroAnimation);
-        // });
-        // document.querySelector('#about').addEventListener('click', function(){
-        //   clearTimeout(loadHeroAnimation);
-        // });
+        document.querySelector('#home').addEventListener('click', function(){
+          clearTimeout(loadHeroAnimation);
+        });
+        document.querySelector('#about').addEventListener('click', function(){
+          clearTimeout(loadHeroAnimation);
+        });
 
 
         // PAGE LOADED!
@@ -69,9 +69,10 @@ export const heroState = function(page) {
             e.preventDefault();
           })
 
-          
-          
         }, 450); 
+
+
+
       }
     });
 
@@ -85,9 +86,10 @@ export const heroState = function(page) {
     }
   }
 
+  
   // ANIMATION entry on page init
   const animateAndInjectHeroPage = () => {
-    
+
     injectDom(true);  // inject hero content after images will be loaded
 
     document.querySelector('#content').style.transform = 'translateY(100px)';
@@ -100,10 +102,7 @@ export const heroState = function(page) {
       document.querySelector('#content').style.transition = '500ms all ease';
 
     }, 50);
-
- 
   }
-
 
 
   // DOM FUNCTION INJECT
