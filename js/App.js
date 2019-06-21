@@ -6,8 +6,8 @@ import { heroPage2 } from './hero-pages/heroPage2.js';
 
 
 // Local - Live environment. Uncomment current
-var $Host = "";             // localhost
-// var $Host = "/Boot";     // live server
+// var $Host = "";             // localhost
+var $Host = "/coffer";     // live server
 
 
 // show hidden nav-bar
