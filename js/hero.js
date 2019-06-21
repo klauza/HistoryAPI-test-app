@@ -16,15 +16,10 @@ export const heroState = function(page) {
   `;
   
 
-   
-
-
   loader(storeAtag)
     .then(res => console.log(res) )
     .catch(err => console.log(err));
 
-
-    
 
 
   // LOADER
@@ -71,8 +66,6 @@ export const heroState = function(page) {
 
         }, 450); 
 
-
-
       }
     });
 
@@ -86,11 +79,11 @@ export const heroState = function(page) {
     }
   }
 
-  
+
   // ANIMATION entry on page init
   const animateAndInjectHeroPage = () => {
 
-    injectDom(true);  // inject hero content after images will be loaded
+    injectDom();
 
     document.querySelector('#content').style.transform = 'translateY(100px)';
     document.querySelector('#content').style.opacity = '0';
@@ -106,9 +99,8 @@ export const heroState = function(page) {
 
 
   // DOM FUNCTION INJECT
-  const injectDom = function(bool){
+  const injectDom = function(){
   
-    if(bool){
     document.querySelector('#content').innerHTML = `
     <div class="container hero-main">
 
@@ -181,22 +173,10 @@ export const heroState = function(page) {
         </div>
       </div>
         
-      </div>
-    
+    </div>
     `;
-    } else {
-      console.log('bool is false');
-    }
-  }
-
-  // function selectBoxHero(id){
-  //   let links = Array.from(document.getElementsByClassName('hero-link'));
-  //   console.log(links);
     
-  //   links.forEach(b => {
-  //     b.classList.toggle('selected', b.id === id);
-  //   });
-  // }
+  }
 
 };
 

@@ -5,9 +5,9 @@ import { heroPage1 } from './hero-pages/heroPage1.js';
 import { heroPage2 } from './hero-pages/heroPage2.js';
 
 
-// For elegance 
-var $Host = "";          // localhost
-// var $Host = "/Boot";  // live server
+// Local - Live environment. Uncomment current
+var $Host = "";             // localhost
+// var $Host = "/Boot";     // live server
 
 
 // show hidden nav-bar
@@ -19,7 +19,6 @@ let result;
 
 // constructor
 const PageState = function() {
-  let loc = location.origin;
   currentState = new homeState(this);
   history.pushState('home', 'Selected: home', `${$Host}/home` );
 
@@ -32,35 +31,31 @@ const PageState = function() {
   }
 };
 
+
+// Instantiate pageState
+const page = new PageState();
+page.init();    // init the first state (home state)
+currentState = new homeState(this);
+
+
+
+// Active link function
 const checkIfActivePage = (e) => {
- 
-  if(e.target.parentNode.classList.contains('active') ){  // if page already active
-    console.log('active, exit');
-    
+  if(e.target.parentNode.classList.contains('active') ){    // if page already active, do not add 'active' class
     return result = false;
+
   }else {
-    // remove active from any <li> tag
+    // 1. remove active from any <li> tag
     let array = document.querySelectorAll('.nav-item');
     array.forEach(function(liItem){
       liItem.classList.remove('active');
     })
 
-    // add active to current <li>
+    // 2. add active to current <li>
     e.target.parentNode.classList.add('active');
-    
     return result = true;
   }
 }
-
-
-
-// Instantiate pageState
-const page = new PageState();
-// Init the first state (homePage)
-  page.init();
-
-currentState = new homeState(this);
-  
 
 
 // page Vars
@@ -100,7 +95,11 @@ window.addEventListener('popstate', e => {
     } else
     if(window.history.state == "hero/1"){
       page.change(new heroPage1);
-      console.log('switch to heropage1');
+
+    } else
+    if(window.history.state == "hero/2"){
+      page.change(new heroPage2);
+
     } else{
       console.log('null');
       selectPage(null);
@@ -108,7 +107,7 @@ window.addEventListener('popstate', e => {
   }
 });
 
-// TESTING
+// browser history page selector
 function selectPage(id){
   let links = Array.from(document.getElementsByClassName('nav-link'));
   
@@ -120,7 +119,6 @@ function selectPage(id){
 
 
 // Page Event Listeners
-// Home
 home.addEventListener('click', (e) => {
   
   checkIfActivePage(e); // checking if active
@@ -134,7 +132,6 @@ home.addEventListener('click', (e) => {
 });
 
 
-// Nav - home
 navLogo.addEventListener('click', (e) => {
   //checkIfActivePage(e); // checking if active
 
@@ -143,7 +140,6 @@ navLogo.addEventListener('click', (e) => {
 })
 
 
-// Hero
 hero.addEventListener('click', (e) => {
   e.preventDefault();
   checkIfActivePage(e); // checking if active
@@ -156,7 +152,7 @@ hero.addEventListener('click', (e) => {
    e.preventDefault();
 });
 
-// About
+
 about.addEventListener('click', (e) => {
   e.preventDefault();
   checkIfActivePage(e); // checking if active
@@ -177,16 +173,13 @@ about.addEventListener('click', (e) => {
 // create hidden <a> element in a very unprofessional way
 // <a id="card-1" class="hero-link" href="#">Link</a>
 
-// Hero Sub page 1
+// Hero Sub pages tags
 export const storeAtag = document.createElement('a');
-storeAtag.innerText = 'link-1';
-storeAtag.id = 'card-1-test';
-storeAtag.classList.add('hero-link');
-storeAtag.setAttribute('href', '#');
+export const storeBtag = document.createElement('a');
 
 
+// Hero Sub page 1
 storeAtag.addEventListener('click', (e) => {
-
   window.scrollTo(0, 65); // 65px down
 
   document.querySelectorAll('.nav-item')[1].classList.remove('active'); // remove active underline from hero main
@@ -199,17 +192,8 @@ storeAtag.addEventListener('click', (e) => {
 });
 
 
-
 // Hero Sub page 2
-export const storeBtag = document.createElement('a');
-storeBtag.innerText = 'link-2';
-storeBtag.id = 'card-2-test';
-storeBtag.classList.add('hero-link');
-storeBtag.setAttribute('href', '#');
-
-
 storeBtag.addEventListener('click', (e) => {
-
   window.scrollTo(0, 65); // 65px down
 
   document.querySelectorAll('.nav-item')[1].classList.remove('active'); // remove active underline from hero main
@@ -224,20 +208,20 @@ storeBtag.addEventListener('click', (e) => {
 
 
 
-  /* NAV ICONS ANIMATION */
-  document.querySelector('.icons-container').addEventListener('mouseenter', (e) => {
-    e.target.style.backgroundColor = '#eaeaea';
-    const icons = Array.from(e.target.children);
-    icons.map((icon) => {
-      icon.style.animationPlayState='paused';
-    })
+/* NAV ICONS ANIMATION */
+document.querySelector('.icons-container').addEventListener('mouseenter', (e) => {
+  e.target.style.backgroundColor = '#eaeaea';
+  const icons = Array.from(e.target.children);
+  icons.map((icon) => {
+    icon.style.animationPlayState='paused';
+  })
 
-  });
-  document.querySelector('.icons-container').addEventListener('mouseleave', (e) => {
-    e.target.style.backgroundColor = '';
-    const icons = Array.from(e.target.children);
-    icons.map((icon) => {
-      icon.style.animationPlayState='running';
-    })
+});
+document.querySelector('.icons-container').addEventListener('mouseleave', (e) => {
+  e.target.style.backgroundColor = '';
+  const icons = Array.from(e.target.children);
+  icons.map((icon) => {
+    icon.style.animationPlayState='running';
+  })
 
-  });
+});
