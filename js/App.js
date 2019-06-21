@@ -2,6 +2,7 @@ import { homeState } from './home.js';
 import { aboutState } from './about.js';
 import { heroState } from './hero.js';
 import { heroPage1 } from './hero-pages/heroPage1.js';
+import { heroPage2 } from './hero-pages/heroPage2.js';
 
 
 // For elegance 
@@ -175,6 +176,8 @@ about.addEventListener('click', (e) => {
 // Subpages in /hero
 // create hidden <a> element in a very unprofessional way
 // <a id="card-1" class="hero-link" href="#">Link</a>
+
+// Hero Sub page 1
 export const storeAtag = document.createElement('a');
 storeAtag.innerText = 'link-1';
 storeAtag.id = 'card-1-test';
@@ -182,22 +185,42 @@ storeAtag.classList.add('hero-link');
 storeAtag.setAttribute('href', '#');
 
 
-
-
 storeAtag.addEventListener('click', (e) => {
 
-  window.scrollTo(0, 65);
+  window.scrollTo(0, 65); // 65px down
 
-  //65px w dół
+  document.querySelectorAll('.nav-item')[1].classList.remove('active'); // remove active underline from hero main
 
-   document.querySelectorAll('.nav-item')[1].classList.remove('active'); // remove active underline from hero main
+  page.change(new heroPage1);
+  history.pushState('hero/1', 'Selected: hero/1', `${$Host}/hero/1` );
+  selectPage('hero/1');
 
-    page.change(new heroPage1);
-    history.pushState('hero/1', 'Selected: hero/1', `${$Host}/hero/1` );
-    selectPage('hero/1');
-   
-   e.preventDefault();
+  e.preventDefault();
 });
+
+
+
+// Hero Sub page 2
+export const storeBtag = document.createElement('a');
+storeBtag.innerText = 'link-2';
+storeBtag.id = 'card-2-test';
+storeBtag.classList.add('hero-link');
+storeBtag.setAttribute('href', '#');
+
+
+storeBtag.addEventListener('click', (e) => {
+
+  window.scrollTo(0, 65); // 65px down
+
+  document.querySelectorAll('.nav-item')[1].classList.remove('active'); // remove active underline from hero main
+
+  page.change(new heroPage2);
+  history.pushState('hero/2', 'Selected: hero/2', `${$Host}/hero/2` );
+  selectPage('hero/2');
+
+  e.preventDefault();
+});
+
 
 
 

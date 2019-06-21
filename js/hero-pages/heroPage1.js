@@ -1,5 +1,3 @@
-
-// heropage1 State
 export const heroPage1 = function() {
 
   // stop page loading on nav link click

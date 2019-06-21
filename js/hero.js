@@ -1,10 +1,7 @@
 // import hero/subpage link events
 import { storeAtag } from './App.js';
+import { storeBtag } from './App.js';
 
-   // if click any nav link before page loads, break the animation, because the animation occurs on another page
-     // tRY TO DISABLE THE BUTTONS WHEN ANIMATION STARTS
-      //  let linksNav = Array.from(document.getElementsByClassName('nav-link'));
-      //  console.log(linksNav);
 
 // Contact State
 export const heroState = function(page) {
@@ -34,19 +31,26 @@ export const heroState = function(page) {
   async function loader(storeAtag){
     
     const promise = new Promise((resolve, reject) => {
-      document.querySelector('#content').innerHTML = injectLoader;  // Puts loader at start
-      
+        document.querySelector('#content').innerHTML = injectLoader;  // Puts loader at start
+        
 
-      let objImg = new Image();           // init Image [biggest one]
-      objImg.src = '../media/pic1-hero.jpg';   // init src of Image
-      
-      objImg.onload = function() {        // when image is loaded.. show the page
+        let objImg = new Image();           // init Image [biggest one]
+        objImg.src = '../media/pic1-hero.jpg';   // init src of Image
+        
+        objImg.onload = function() {        // when image is loaded.. show the page
 
     
+        // prevent from loading #hero page into another state
+        // document.querySelector('#home').addEventListener('click', function(){
+        //   clearTimeout(loadHeroAnimation);
+        // });
+        // document.querySelector('#about').addEventListener('click', function(){
+        //   clearTimeout(loadHeroAnimation);
+        // });
 
 
         // PAGE LOADED!
-        setTimeout(function(){   // minimum time for spinner
+        var loadHeroAnimation = setTimeout(function(){   // minimum time for spinner
           console.log('Hero loaded');
           
           // Inject Dom
@@ -54,11 +58,18 @@ export const heroState = function(page) {
 
           // Card links
           const cardOne = document.getElementById('card-1');  
+          const cardTwo = document.getElementById('card-2');  
           
           cardOne.addEventListener('click', (e) => {
             storeAtag.click();
             e.preventDefault();
           })
+          cardTwo.addEventListener('click', (e) => {
+            storeBtag.click();
+            e.preventDefault();
+          })
+
+          
           
         }, 450); 
       }
@@ -89,6 +100,8 @@ export const heroState = function(page) {
       document.querySelector('#content').style.transition = '500ms all ease';
 
     }, 50);
+
+ 
   }
 
 
