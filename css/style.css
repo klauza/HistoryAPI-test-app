@@ -34,7 +34,7 @@ body {
   border-bottom: 1px solid black; }
 
 .nav-icon {
-  width: 35px;
+  width: 28px;
   position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);
@@ -48,32 +48,32 @@ body {
 
 .nav-icon:nth-of-type(1) {
   right: 5%;
-  -webkit-animation-delay: 0ms;
-          animation-delay: 0ms; }
+  -webkit-animation-delay: 250ms;
+          animation-delay: 250ms; }
 
 .nav-icon:nth-of-type(2) {
-  right: 40%;
+  right: calc(50% - 14px);
   -webkit-animation-delay: 500ms;
           animation-delay: 500ms; }
 
 .nav-icon:nth-of-type(3) {
-  right: calc(100% - 50px);
-  -webkit-animation-delay: 2000ms;
-          animation-delay: 2000ms; }
+  left: 5%;
+  -webkit-animation-delay: 750ms;
+          animation-delay: 750ms; }
 
 @-webkit-keyframes github-animation {
   0% {
     -webkit-transform: translateY(-50%);
             transform: translateY(-50%); }
   25% {
-    -webkit-transform: translateY(-45%);
-            transform: translateY(-45%); }
+    -webkit-transform: translateY(-40%);
+            transform: translateY(-40%); }
   50% {
     -webkit-transform: translateY(-50%);
             transform: translateY(-50%); }
   75% {
-    -webkit-transform: translateY(-55%);
-            transform: translateY(-55%); }
+    -webkit-transform: translateY(-60%);
+            transform: translateY(-60%); }
   100% {
     -webkit-transform: translateY(-50%);
             transform: translateY(-50%); } }
@@ -83,14 +83,14 @@ body {
     -webkit-transform: translateY(-50%);
             transform: translateY(-50%); }
   25% {
-    -webkit-transform: translateY(-45%);
-            transform: translateY(-45%); }
+    -webkit-transform: translateY(-40%);
+            transform: translateY(-40%); }
   50% {
     -webkit-transform: translateY(-50%);
             transform: translateY(-50%); }
   75% {
-    -webkit-transform: translateY(-55%);
-            transform: translateY(-55%); }
+    -webkit-transform: translateY(-60%);
+            transform: translateY(-60%); }
   100% {
     -webkit-transform: translateY(-50%);
             transform: translateY(-50%); } }
@@ -103,6 +103,10 @@ body {
   right: 10%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%); }
+
+@media (max-width: 990px) {
+  .icons-container {
+    display: none; } }
 
 .hero-main {
   padding-bottom: 50px; }

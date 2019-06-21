@@ -6,7 +6,7 @@ export const aboutState = function() {
       <h2>About</h2>
       
       <ul>  Technology used in this project:
-        <li> State module pattern </li>
+        <li> state module pattern </li>
         <li> Promises </li>
         <li> browser history API </li>
       </ul>
