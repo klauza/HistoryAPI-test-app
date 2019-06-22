@@ -30,7 +30,7 @@ export const heroState = function(page) {
         
 
         let objImg = new Image();           // init Image [biggest one]
-        objImg.src = '../media/pic1-hero.jpg';   // init src of Image
+        objImg.src = '../media/3.jpg';   // init src of Image
         
         objImg.onload = function() {        // when image is loaded.. show the page
 
@@ -114,7 +114,7 @@ export const heroState = function(page) {
       <div class="row">
         <div class="col-sm mt-2">
           <div class="card col-sm">
-            <img src="${location.origin}/media/pic1-hero.jpg" class="mt-2 card-img-top img-test-1" alt="pic1">
+            <img src="${location.origin}/media/3.jpg" class="mt-2 card-img-top img-test-1" alt="pic1">
             <div class="card-body">
               <p class="card-text">Made with significant amount of opacity and transform animations</p>
               <button id="card-1" class="hero-link btn btn-outline-success" type="button">See prototype</button>
@@ -126,7 +126,7 @@ export const heroState = function(page) {
           <div class="card col-sm">
             <img src="${location.origin}/media/pic2-hero.jpg" class="mt-2 card-img-top" alt="pic2">
             <div class="card-body">
-              <p class="card-text">Another example of simple hero page.</p>
+              <p class="card-text">Stars, the universe filler</p>
               <button id="card-2" class="hero-link btn btn-outline-success" type="button">See prototype</button>
             </div>
           </div>

@@ -31,58 +31,83 @@ export const heroPage1 = function() {
 
 
   let dom = `
-  <button class="back-btn-to-main btn btn-primary">Back</button>
-  <div class="body-page1">
-    <div class="open">
-      <div class="layer"></div>
-      <div class="layer"></div>
-    </div>
-    <section>
-      <div class="header">
-        <h2 class="logo">Your Logo</h2>
-        <ul>
-          <li>
-            <a href="#" class="active">Home</a>
+  <div class="content-page3">
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Cloth Bar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
           </li>
-          <li>
-            <a href="#">About</a>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Hoodies</a>
           </li>
-          <li>
-            <a href="#">Services</a>
           </li>
-          <li>
-            <a href="#">Our Work</a>
+          <li class="nav-item">
+            <a class="nav-link" href="#">T-shirts</a>
           </li>
-          <li>
-            <a href="#">Portfolio</a>
           </li>
-          <li>
-            <a href="#">Contact</a>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Sweaters</a>
           </li>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Jeans</a>
+          </li>
+         
         </ul>
+     
       </div>
-      <div class="bannerText">
-        <h2>Think Creative</h2><br>
-        <h3>And Make Innovative Design</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <a href="#">Read More</a>
+    </div>
+  </nav>
+
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="${location.origin}/media/1.jpg" class="d-block w-100" alt="1">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Newfest set</h5>
+            <p>Check out the amazing life saver hoodie</p>
+            <button type="button" class="btn btn-outline-light">Go check</button>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="${location.origin}/media/2.jpg" class="d-block w-100" alt="2">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Archangelic blue</h5>
+            <p>It shows the real light</p>
+            <button type="button" class="btn btn-outline-light">Explore</button>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="${location.origin}/media/3.jpg" class="d-block w-100" alt="3">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Savage</h5>
+            <p>Exclusive hoodie with new technology</p>
+            <button type="button" class="btn btn-outline-light">Check it out</button>
+          </div>
+        </div>
       </div>
-      
-      <ul class="sci">
-        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-      </ul>
-      <div class="element1"></div>
-      <div class="element2"></div>
-    </section>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
   </div>
+</div>
 `;
 
 
@@ -112,11 +137,7 @@ export const heroPage1 = function() {
       clearInterval(initPage);
       document.querySelector('#content').innerHTML = dom;
 
-      // go back button
-      document.querySelector('.back-btn-to-main').addEventListener('click', function(e){
-        document.querySelector('#hero').click();
-        e.preventDefault();
-      })
+      
     }
 
   }, 500);

@@ -9,7 +9,7 @@ export const homeState = function() {
     <p class="text-center" id="title">Welcome to my sandbox <br/>
     The content of this project is not important <br/>
     Go to <strong>about</strong> page to learn more</p> 
-    <div class="image-div"><img src="./media/main.jpg" /></div>
+    <div class="image-div"><img src="${location.origin}/media/main.jpg" /></div>
   </div>
   `;
 
