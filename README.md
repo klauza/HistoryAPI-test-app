@@ -20,5 +20,6 @@ This is a project created for learning purposes. The main idea of this website w
 ## Deployment
 There is no build script in this project. To deploy, simply copy paste.
 <hr/>
+
 ## Issues
 The back/forward button works correct and website is moving onto indicated direction, but when the page is being refreshed by the user, it firstly goes to previous created empty sub page which is redirecting to the ./home url.
