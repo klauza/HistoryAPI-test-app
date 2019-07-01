@@ -1,8 +1,8 @@
 import { homeState } from './home.js';
 import { aboutState } from './about.js';
 import { heroState } from './hero.js';
-import { heroPage1 } from './hero-pages/heroPage1.js';
-import { heroPage2 } from './hero-pages/heroPage2.js';
+import { heroPage1 } from './heroPage1.js';
+import { heroPage2 } from './heroPage2.js';
 
 
 // Local / Live server environment.
@@ -112,8 +112,8 @@ window.addEventListener('popstate', e => {
 function selectPage(id){
   let links = Array.from(document.getElementsByClassName('nav-link'));
   
-  links.forEach(b => {
-    b.classList.toggle('selected', b.id === id);
+  links.forEach((link) => {
+    link.classList.toggle('selected', link.id === id);
   });
 }
 

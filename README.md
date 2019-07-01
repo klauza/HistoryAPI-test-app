@@ -27,7 +27,8 @@ There is no build script in this project. To deploy, simply copy paste.
 
 
 ## Issues
---
+In localserver refresh button won't work.
+Error occurs while reloading in sub pages of /hero
 
 ## License
 MIT license
