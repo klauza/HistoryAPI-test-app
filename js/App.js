@@ -5,7 +5,7 @@ import { heroPage1 } from './hero-pages/heroPage1.js';
 import { heroPage2 } from './hero-pages/heroPage2.js';
 
 
-// Local - Live environment. Uncomment current
+// Local / Live server environment.
 var $Host = "";             // localhost
 // var $Host = "/coffer";     // live server
 
