@@ -1,64 +1,82 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-	<title>coffer</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>History API SPA</title>
 
-	<meta name="description" content="DESCRIPTION"/>
-  <meta name="keywords" content="KEYWORDS"/>
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <link rel="icon" href="./media/treasure.png">
+    <meta name="description" content="DESCRIPTION" />
+    <meta name="keywords" content="KEYWORDS" />
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="icon" href="./media/treasure.png" />
+  </head>
+  <body>
+    <nav class="d-none navbar navbar-expand-lg navbar-light bg-light mb-3">
+      <p class="navbar-brand" href="#">
+        <img src="./media/treasure.png" alt="" />
+      </p>
 
+      <div class="icons-container">
+        <img class="nav-icon" src="./media/github-logo.svg" />
+        <img class="nav-icon" src="./media/linkedin-sign.svg" />
+        <img class="nav-icon" src="./media/suitcase-with-white-details.svg" />
+      </div>
 
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-
-</head>
-<body>
-  
-  <nav class="d-none navbar navbar-expand-lg navbar-light bg-light mb-3">
-    <p class="navbar-brand" href="#"><img src="./media/treasure.png" alt=""></p>
-
-    <div class="icons-container">
-      <img class="nav-icon" src="./media/github-logo.svg" />
-      <img class="nav-icon" src="./media/linkedin-sign.svg" />
-      <img class="nav-icon" src="./media/suitcase-with-white-details.svg" />
-    </div>
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
-      <ul class="navbar-nav m-auto">
-        <li class="nav-item active">
-          <a id="home" class="nav-link" href="#">Home</a>
-        </li> 
-        <li class="nav-item">
-          <a id="hero" class="nav-link" href="#">Hero</a>
-        </li> 
-        <li class="nav-item">
-          <a id="about" class="nav-link" href="#">About</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+      <div
+        class="collapse navbar-collapse text-center"
+        id="navbarSupportedContent"
+      >
+        <ul class="navbar-nav m-auto">
+          <li class="nav-item active">
+            <a id="home" class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a id="hero" class="nav-link" href="#">Hero</a>
+          </li>
+          <li class="nav-item">
+            <a id="about" class="nav-link" href="#">About</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
     <div class="container-pages">
       <h1 id="heading"></h1>
       <div id="content"></div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-    
-    
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+      integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+      integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+      crossorigin="anonymous"
+    ></script>
 
     <script type="module" src="js/App.js"></script>
-  
-
   </body>
 </html>
